@@ -1,0 +1,43 @@
+
+public class PigLatin {
+
+	public static void main(String[] args) {
+
+		translate("Hello");
+	}
+
+	public static String translate(String a) {
+		String word = a.toLowerCase();
+		int vowelIndex = getVowelIndex(word);
+		String translation;
+		
+		if(vowelIndex == 0) {
+			translation = word + "way";
+			return translation;
+		}else if(vowelIndex > 0) {
+			translation = word.substring(vowelIndex) + word.substring(0, vowelIndex) + "ay";
+		} else {
+			translation = word;
+		}
+		System.out.println(translation);
+		return translation;
+		
+	}
+	
+	public static boolean isVowel(char c) {
+		return (c == 'a' || c == 'e'|| c == 'i'|| c == 'o' || c == 'u');
+	}
+	
+	public static int getVowelIndex (String word) {
+		int wordLength =word.length();      
+		for (int i = 0; i < wordLength; i++)
+		{
+			if (isVowel(word.charAt(i)))
+			{ 
+				return i;
+			}
+			
+		}
+		return -1;
+}
+}
